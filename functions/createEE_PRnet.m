@@ -29,7 +29,7 @@ opts.at_augment_on = 40;
 opts = vl_argparse(opts, varargin);
 
 %% Create vgg-16 base model
-    net = dagnn.DagNN.fromSimpleNN(load('imagenet-vgg-verydeep-16.mat'));
+    net = dagnn.DagNN.fromSimpleNN(load('imagenet-matconvnet-vgg-verydeep-16.mat'));
     Nlayers = net.getLayerIndex(opts.f_sROI_layer);
     while length(net.layers)>Nlayers
         net.removeLayer(net.layers(end).name);
@@ -59,6 +59,8 @@ net.layers(end).outputs{1}, {'f_sROIout'}, {}) ;
 if(opts.embedding == true)    
     if(opts.ROIsize(1) == 112)
         opts.conv1size = 14;
+    else
+        opts.conv1size = 7;
     end
     if(strcmp(opts.f_sROI_layer,'pool3'))
         opts.conv1depth = 256; 

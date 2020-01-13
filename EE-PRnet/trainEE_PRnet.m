@@ -75,7 +75,9 @@ save(fullfile(paths.results,expNum,'topts.mat'),'topts');
 %% Train 
 imdb.image = image;
 imdb.label = label;
+if(isfield(Data.imdb.meta,'setTransformation'))
 imdb.setTransformation = Data.imdb.meta.setTransformation;
+end
 opts=struct();
 opts.weightDecay = topts.weightDecay;
 opts.momentum = topts.momentum;

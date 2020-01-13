@@ -1,5 +1,4 @@
-d% build imdb
-
+% build imdb
 function []=augment_build_imdb(expNum,dbName,imgType,dataListName)
 fprintf('building imdb\n')
 % expNum = 'exp1'; 
